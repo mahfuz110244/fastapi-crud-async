@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3'
 
 services:
   web:
@@ -11,9 +11,11 @@ services:
     environment:
       - DATABASE_URL=postgresql://hello_fastapi:hello_fastapi@db/hello_fastapi_dev
   db:
-    image: postgres:12.1-alpine
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
+    image: postgres:11
+    ports:
+      - "5432:5432"
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=hello_fastapi
       - POSTGRES_PASSWORD=hello_fastapi
